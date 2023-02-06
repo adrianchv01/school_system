@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    #Vista school
+    <record id="school_tree" model="ir.ui.view">
+        <field name="name">school.tree</field>
+        <field name="model">school.subject</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="credits"/>
+                <field name="max_students"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    #Vista Student
+    <record id="student_tree" model="ir.ui.view">
+        <field name="name">student.tree</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+
+                <field name="age"/>
+                <field name="final_exam_grade"/>
+            </tree>
+        </field>
+    </record>
+
+    #vista teacher
+    <record id="teacher_tree" model="ir.ui.view">
+        <field name="name">teacher.tree</field>
+        <field name="model">school.teacher</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="profile"/>
+            </tree>
+        </field>
+    </record>
+
+    #Menu School
+    <record id="school_form" model="ir.ui.view">
+        <field name="name">school.form</field>
+        <field name="model">school.subject</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                    <group>
+                        <field name="name"/>
+                        <field name="credits"/>
+                    </group>
+                    <group>
+                        <field name="max_students"/>
+                        <field name="active"/>
+                    </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    #Menu Student
+    <record id="student_form" model="ir.ui.view">
+        <field name="name">student.form</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                    <group>
+                        <field name="name"/>
+
+                    </group>
+                    <group>
+                        <field name="age"/>
+                        <field name="final_exam_grade"/>
+                    </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    #Menu Teacher
+    <record id="teacher_form" model="ir.ui.view">
+        <field name="name">teacher.form</field>
+        <field name="model">school.teacher</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="profile" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    #Action School
+    <record id="school_action" model="ir.actions.act_window">
+        <field name="name">School System</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">school.subject</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    #Action Student
+    <record id="student_action" model="ir.actions.act_window">
+        <field name="name">Student System</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">school.student</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    #Action Teacher
+    <record id="teacher_action" model="ir.actions.act_window">
+        <field name="name">Teacher System</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">school.teacher</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="School" id="school_menu" sequence="10"/>
+
+    <menuitem name="Students" id="school_root" parent="school_menu" sequence="10" action="student_action"/>
+    <menuitem name="Teachers" id="school_teachers" parent="school_menu" sequence="10" action="teacher_action"/>
+</odoo>
